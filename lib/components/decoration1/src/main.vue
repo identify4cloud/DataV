@@ -2,10 +2,8 @@
   <div class="dv-decoration-1" :ref="ref">
     <svg :width="`${svgWH[0]}px`" :height="`${svgWH[1]}px`" :style="`transform:scale(${svgScale[0]},${svgScale[1]});`">
 
-      <template
-        v-for="(point, i) in points"
-      >
-        <rect
+      <rect
+          v-for="(point, i) in points"
           v-if="Math.random() > 0.6"
           :key="i"
           :fill="mergedColor[0]"
@@ -13,71 +11,70 @@
           :y="point[1] - halfPointSideLength"
           :width="pointSideLength"
           :height="pointSideLength"
-        >
-          <animate
+      >
+        <animate
             v-if="Math.random() > 0.6"
             attributeName="fill"
             :values="`${mergedColor[0]};transparent`"
             dur="1s"
             :begin="Math.random() * 2"
             repeatCount="indefinite"
-          />
-        </rect>
-      </template>
-
-      <rect
-        v-if="rects[0]"
-        :fill="mergedColor[1]"
-        :x="rects[0][0] - pointSideLength"
-        :y="rects[0][1] - pointSideLength"
-        :width="pointSideLength * 2"
-        :height="pointSideLength * 2"
-      >
-        <animate
-          attributeName="width"
-          :values="`0;${pointSideLength * 2}`"
-          dur="2s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="height"
-          :values="`0;${pointSideLength * 2}`"
-          dur="2s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="x"
-          :values="`${rects[0][0]};${rects[0][0] - pointSideLength}`"
-          dur="2s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="y"
-          :values="`${rects[0][1]};${rects[0][1] - pointSideLength}`"
-          dur="2s"
-          repeatCount="indefinite"
         />
       </rect>
 
       <rect
-        v-if="rects[1]"
-        :fill="mergedColor[1]"
-        :x="rects[1][0] - 40"
-        :y="rects[1][1] - pointSideLength"
-        :width="40"
-        :height="pointSideLength * 2"
+          v-if="rects[0]"
+          :fill="mergedColor[1]"
+          :x="rects[0][0] - pointSideLength"
+          :y="rects[0][1] - pointSideLength"
+          :width="pointSideLength * 2"
+          :height="pointSideLength * 2"
       >
         <animate
-          attributeName="width"
-          values="0;40;0"
-          dur="2s"
-          repeatCount="indefinite"
+            attributeName="width"
+            :values="`0;${pointSideLength * 2}`"
+            dur="2s"
+            repeatCount="indefinite"
         />
         <animate
-          attributeName="x"
-          :values="`${rects[1][0]};${rects[1][0] - 40};${rects[1][0]}`"
-          dur="2s"
-          repeatCount="indefinite"
+            attributeName="height"
+            :values="`0;${pointSideLength * 2}`"
+            dur="2s"
+            repeatCount="indefinite"
+        />
+        <animate
+            attributeName="x"
+            :values="`${rects[0][0]};${rects[0][0] - pointSideLength}`"
+            dur="2s"
+            repeatCount="indefinite"
+        />
+        <animate
+            attributeName="y"
+            :values="`${rects[0][1]};${rects[0][1] - pointSideLength}`"
+            dur="2s"
+            repeatCount="indefinite"
+        />
+      </rect>
+
+      <rect
+          v-if="rects[1]"
+          :fill="mergedColor[1]"
+          :x="rects[1][0] - 40"
+          :y="rects[1][1] - pointSideLength"
+          :width="40"
+          :height="pointSideLength * 2"
+      >
+        <animate
+            attributeName="width"
+            values="0;40;0"
+            dur="2s"
+            repeatCount="indefinite"
+        />
+        <animate
+            attributeName="x"
+            :values="`${rects[1][0]};${rects[1][0] - 40};${rects[1][0]}`"
+            dur="2s"
+            repeatCount="indefinite"
         />
       </rect>
     </svg>
@@ -87,9 +84,9 @@
 <script>
 import autoResize from '../../../mixin/autoResize'
 
-import { deepMerge } from '@jiaminghi/charts/lib/util/index'
+import {deepMerge} from '@jiaminghi/charts/lib/util/index'
 
-import { deepClone } from '@jiaminghi/c-render/lib/plugin/util'
+import {deepClone} from '@jiaminghi/c-render/lib/plugin/util'
 
 export default {
   name: 'DvDecoration1',
@@ -100,7 +97,7 @@ export default {
       default: () => ([])
     }
   },
-  data () {
+  data() {
     const pointSideLength = 2.5
 
     return {
@@ -126,20 +123,20 @@ export default {
     }
   },
   watch: {
-    color () {
-      const { mergeColor } = this
+    color() {
+      const {mergeColor} = this
 
       mergeColor()
     }
   },
   methods: {
-    afterAutoResizeMixinInit () {
-      const { calcSVGData } = this
+    afterAutoResizeMixinInit() {
+      const {calcSVGData} = this
 
       calcSVGData()
     },
-    calcSVGData () {
-      const { calcPointsPosition, calcRectsPosition, calcScale } = this
+    calcSVGData() {
+      const {calcPointsPosition, calcRectsPosition, calcScale} = this
 
       calcPointsPosition()
 
@@ -147,8 +144,8 @@ export default {
 
       calcScale()
     },
-    calcPointsPosition () {
-      const { svgWH, rowNum, rowPoints } = this
+    calcPointsPosition() {
+      const {svgWH, rowNum, rowPoints} = this
 
       const [w, h] = svgWH
 
@@ -156,40 +153,40 @@ export default {
       const verticalGap = h / (rowNum + 1)
 
       let points = new Array(rowNum).fill(0).map((foo, i) =>
-        new Array(rowPoints).fill(0).map((foo, j) => [
-          horizontalGap * (j + 1), verticalGap * (i + 1)
-        ]))
+          new Array(rowPoints).fill(0).map((foo, j) => [
+            horizontalGap * (j + 1), verticalGap * (i + 1)
+          ]))
 
       this.points = points.reduce((all, item) => [...all, ...item], [])
     },
-    calcRectsPosition () {
-      const { points, rowPoints } = this
+    calcRectsPosition() {
+      const {points, rowPoints} = this
 
       const rect1 = points[rowPoints * 2 - 1]
       const rect2 = points[rowPoints * 2 - 3]
 
       this.rects = [rect1, rect2]
     },
-    calcScale () {
-      const { width, height, svgWH } = this
+    calcScale() {
+      const {width, height, svgWH} = this
 
       const [w, h] = svgWH
 
       this.svgScale = [width / w, height / h]
     },
-    onResize () {
-      const { calcSVGData } = this
+    onResize() {
+      const {calcSVGData} = this
 
       calcSVGData()
     },
-    mergeColor () {
-      const { color, defaultColor } = this
+    mergeColor() {
+      const {color, defaultColor} = this
 
       this.mergedColor = deepMerge(deepClone(defaultColor, true), color || [])
     }
   },
-  mounted () {
-    const { mergeColor } = this
+  mounted() {
+    const {mergeColor} = this
 
     mergeColor()
   }
