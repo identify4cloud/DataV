@@ -1,6 +1,6 @@
 {
   "name": "@tify4cloud/data-view",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "tify4cloud <1254462732@qq.com>",
   "description": "Vue Large screen data display component library",
   "main": "lib/index.js",
