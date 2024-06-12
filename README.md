@@ -56,21 +56,5 @@ Vue.use(borderBox1)
 
 组件库的开发基于个人学习和兴趣，由于技术水平及经验的限制，组件尚有许多不完善之处，如有BUG可及时提交[issue](https://github.com/DataV-Team/DataV/issues/new?template=bug_report.md)或添加反馈群进行反馈，也欢迎提供指正和建议，感谢各位的支持。
 
-### 反馈
-![Feedback](./QQGroup.png)
-
-### Demo
-
-Demo页面使用了全屏组件，请F11全屏后查看。
-
-* [施工养护综合数据](http://datav.jiaminghi.com/demo/construction-data/index.html)
-
-![construction-data](./demoImg/construction-data.jpg)
-
-* [机电运维管理台](http://datav.jiaminghi.com/demo/manage-desk/index.html)
-
-![manage-desk](./demoImg/manage-desk.jpg)
-
-* [机电设备电子档案](http://datav.jiaminghi.com/demo/electronic-file/index.html)
-
-![electronic-file](./demoImg/electronic-file.jpg)
+## 说明
+本仓库是修复 DataV 在 vue3 中引用报错的问题

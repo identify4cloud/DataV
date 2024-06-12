@@ -66,22 +66,5 @@ React version of the component library and feedback[Questionnaire](https://www.w
 
 The development of the component library is based on personal learning and interest. Due to technical level and experience limitations, there are still many imperfections in the components. If there are errors, you can submit [issue](https://github.com/DataV-team/DataV/issues/new?template=bug_report.md) in time or add feedback groups for feedback. Welcome to provide corrections and suggestions. Thank you for your support.
 
-### Feedback
-
-![Feedback](./QQGroup.png)
-
-### Demo
-
-The Demo page uses the full-screen component, please view it after F11 full screen.
-
-* [Construction Data](http://datav.jiaminghi.com/demo/construction-data/index.html)
-
-![construction-data](./demoImg/construction-data.jpg)
-
-* [Manage-Desk](http://datav.jiaminghi.com/demo/manage-desk/index.html)
-
-![manage-desk](./demoImg/manage-desk.jpg)
-
-* [Electronic-File](http://datav.jiaminghi.com/demo/electronic-file/index.html)
-
-![electronic-file](./demoImg/electronic-file.jpg)
+## description
+This repository is to fix DataV in vue3 reference error problem
